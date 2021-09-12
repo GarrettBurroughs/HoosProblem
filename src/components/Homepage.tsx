@@ -3,13 +3,12 @@ import styled, {keyframes} from 'styled-components';
 import Header from './Header';
 import Post from './Post';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, Firestore, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, Firestore, onSnapshot } from 'firebase/firestore';
 import PostInput from './PostInput';
 
 
-interface HomepageProps{}
 
-interface Post {
+interface IPost {
     postContent: string;
     time: {
         seconds: number;
@@ -17,12 +16,6 @@ interface Post {
     }
 }
 
-const StyledBox = styled.div`
-    width: 500px;
-    height: 500px;
-    background-color: black;
-    margin: 10px;
-`
 
 const StyledGrid = styled.div`
     display: grid;
@@ -57,9 +50,9 @@ const Spinner = styled.div`
 
 
 
-const Homepage: React.FunctionComponent<HomepageProps> = ({ }) => {
+const Homepage: React.FunctionComponent = () => {
     const [db, setDb] = React.useState<Firestore>();
-    const [posts, setPosts] = React.useState<Post[]>();
+    const [posts, setPosts] = React.useState<IPost[]>();
 
     React.useEffect(() => {
         const firebaseConfig = {
@@ -73,14 +66,14 @@ const Homepage: React.FunctionComponent<HomepageProps> = ({ }) => {
         };
 
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
+        initializeApp(firebaseConfig);
         const db = getFirestore();
         setDb(db);
 
         const postsCol = collection(db, 'posts');
 
         onSnapshot(postsCol, (col) => {
-            const posts: Post[] = [];
+            const posts: IPost[] = [];
 
             col.forEach(doc => {
                 const data = doc.data();
@@ -95,7 +88,7 @@ const Homepage: React.FunctionComponent<HomepageProps> = ({ }) => {
         });
     }, []);
 
-    const comparePosts: (a: Post, b: Post) => number = (a, b) => {
+    const comparePosts: (a: IPost, b: IPost) => number = (a, b) => {
         return b.time.seconds - a.time.seconds;
     }
     

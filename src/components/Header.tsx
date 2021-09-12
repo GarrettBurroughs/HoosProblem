@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface HeaderProps{}
-
 const StyledHeader = styled.div`
     position: fixed;
     top: 0;
@@ -14,14 +12,14 @@ const StyledHeader = styled.div`
     font-size: 34px;
     font-weight: bold; 
     width: 100%;
-    height 70px;
+    height: 70px;
     align-items: center;
     justify-content: center;
     z-index: 2;
 
-`;
+`; 
 
-const Header: React.FunctionComponent<HeaderProps> = ({}) => {
+const Header: React.FunctionComponent = () => {
     return (
         <StyledHeader>
             Hoos Problem
