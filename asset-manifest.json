@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/HoosProblem/static/css/main.bb25a039.chunk.css",
+    "main.js": "/HoosProblem/static/js/main.fd82eaaa.chunk.js",
+    "main.js.map": "/HoosProblem/static/js/main.fd82eaaa.chunk.js.map",
+    "runtime-main.js": "/HoosProblem/static/js/runtime-main.1d7812d4.js",
+    "runtime-main.js.map": "/HoosProblem/static/js/runtime-main.1d7812d4.js.map",
+    "static/js/2.5593d512.chunk.js": "/HoosProblem/static/js/2.5593d512.chunk.js",
+    "static/js/2.5593d512.chunk.js.map": "/HoosProblem/static/js/2.5593d512.chunk.js.map",
+    "static/js/3.3e73151c.chunk.js": "/HoosProblem/static/js/3.3e73151c.chunk.js",
+    "static/js/3.3e73151c.chunk.js.map": "/HoosProblem/static/js/3.3e73151c.chunk.js.map",
+    "index.html": "/HoosProblem/index.html",
+    "static/css/main.bb25a039.chunk.css.map": "/HoosProblem/static/css/main.bb25a039.chunk.css.map",
+    "static/js/2.5593d512.chunk.js.LICENSE.txt": "/HoosProblem/static/js/2.5593d512.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1d7812d4.js",
+    "static/js/2.5593d512.chunk.js",
+    "static/css/main.bb25a039.chunk.css",
+    "static/js/main.fd82eaaa.chunk.js"
+  ]
+}
