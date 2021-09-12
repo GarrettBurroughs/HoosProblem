@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap");
+
+:root {
+  --uva-orange: #e57200;
+  --uva-blue: #232d4b;
+  --header-text: "Permanent Marker", cursive;
+  --body-text: "Roboto", sans-serif;
+}
+
 .App {
   text-align: center;
 }
