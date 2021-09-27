@@ -55,8 +55,14 @@ const StyledPostContent = styled.div`
 const Post: React.FunctionComponent<PostProps> = ({ postContent, postTime }) => {
     const [avatarKey, setAvatarKey] = React.useState<string>("");
     React.useEffect(() => {
-        const key = crypto.createHash('md5').update(postContent).digest('hex');
-        console.log(key);
+        let key = "";
+        try {
+            key = crypto.createHash('md5').update(postContent).digest('hex');
+        } catch (e) {
+            console.error(`post content hash error: ${postContent}`);
+            console.error(e);
+            key = "";
+        }
         setAvatarKey(key);
     }, [postContent])
 

@@ -58,17 +58,28 @@ const StyledButton = styled.button`
 `;
 const PostInput: React.FunctionComponent<PostInputProps> = ({ db }) => {
     const [textAreaContent, setTextAreaContent] = React.useState<string>();
-    
+    const textRef = React.useRef<HTMLTextAreaElement>(null);
+
     const handleInput: React.MouseEventHandler = (event: React.MouseEvent) => {
         event.preventDefault();
         console.log(textAreaContent);
         if (db) {
+            if (!textAreaContent) {
+                alert("Post must contain content");
+                return; 
+            }
             const postCollection = collection(db, 'posts');
             const ts = new Timestamp(Date.now()/1000, 0);
             addDoc(postCollection, {
                 postContent: textAreaContent,
-                time: ts
+                time: ts,
+                upvotes: 0
             });
+            setTextAreaContent("");
+            if (textRef.current) {
+                textRef.current.innerText = "";
+                textRef.current.value = "";
+            }
             console.log('post created');
         } else {
             console.log('not connected to database');
@@ -77,7 +88,7 @@ const PostInput: React.FunctionComponent<PostInputProps> = ({ db }) => {
     
     return (
         <StyledPostInput>
-            <StyledTextarea placeholder="Have a problem?" onChange={(e) => {setTextAreaContent(e.target.value)}}></StyledTextarea>
+            <StyledTextarea ref={textRef} placeholder="Have a problem?" onChange={(e) => {setTextAreaContent(e.target.value)}}></StyledTextarea>
             <StyledButton onClick={handleInput}>Post!</StyledButton>
         </StyledPostInput>
     );
