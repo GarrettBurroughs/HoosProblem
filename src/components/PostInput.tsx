@@ -23,7 +23,10 @@ const StyledPostInput = styled.div`
 `
 
 const StyledTextarea = styled.textarea`
-    width: 90%;
+    width: 75%;
+    @media only screen and (max-width: 700px){
+        width: 65%;
+    }
     margin-right: 5%;
     margin-left: 5%;
     margin-top: 15px;

@@ -54,6 +54,7 @@ const StyledPostContent = styled.div`
     border-left: 5px solid rgba(35, 45, 75, .5);
     padding-left: 3px;
     margin-bottom: 15px;
+    padding-right: 15px;
 `;
 
 const StyledButton = styled.button`
