@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/HoosProblem/static/css/main.5ac459e2.chunk.css",
-    "main.js": "/HoosProblem/static/js/main.acdd6488.chunk.js",
-    "main.js.map": "/HoosProblem/static/js/main.acdd6488.chunk.js.map",
+    "main.js": "/HoosProblem/static/js/main.14a9c7d5.chunk.js",
+    "main.js.map": "/HoosProblem/static/js/main.14a9c7d5.chunk.js.map",
     "runtime-main.js": "/HoosProblem/static/js/runtime-main.7c587bff.js",
     "runtime-main.js.map": "/HoosProblem/static/js/runtime-main.7c587bff.js.map",
-    "static/js/2.70a40c29.chunk.js": "/HoosProblem/static/js/2.70a40c29.chunk.js",
-    "static/js/2.70a40c29.chunk.js.map": "/HoosProblem/static/js/2.70a40c29.chunk.js.map",
+    "static/js/2.4fb56613.chunk.js": "/HoosProblem/static/js/2.4fb56613.chunk.js",
+    "static/js/2.4fb56613.chunk.js.map": "/HoosProblem/static/js/2.4fb56613.chunk.js.map",
     "static/js/3.4bf76836.chunk.js": "/HoosProblem/static/js/3.4bf76836.chunk.js",
     "static/js/3.4bf76836.chunk.js.map": "/HoosProblem/static/js/3.4bf76836.chunk.js.map",
     "index.html": "/HoosProblem/index.html",
     "static/css/main.5ac459e2.chunk.css.map": "/HoosProblem/static/css/main.5ac459e2.chunk.css.map",
-    "static/js/2.70a40c29.chunk.js.LICENSE.txt": "/HoosProblem/static/js/2.70a40c29.chunk.js.LICENSE.txt"
+    "static/js/2.4fb56613.chunk.js.LICENSE.txt": "/HoosProblem/static/js/2.4fb56613.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7c587bff.js",
-    "static/js/2.70a40c29.chunk.js",
+    "static/js/2.4fb56613.chunk.js",
     "static/css/main.5ac459e2.chunk.css",
-    "static/js/main.acdd6488.chunk.js"
+    "static/js/main.14a9c7d5.chunk.js"
   ]
 }
