@@ -12,8 +12,9 @@ interface IPost {
     postContent: string;
     time: {
         seconds: number;
-        nanoseconds: number; 
-    }
+        nanoseconds: number;
+    };
+    id: string; 
 }
 
 
@@ -74,12 +75,13 @@ const Homepage: React.FunctionComponent = () => {
 
         onSnapshot(postsCol, (col) => {
             const posts: IPost[] = [];
-
+            
             col.forEach(doc => {
                 const data = doc.data();
                 posts.push({
                     postContent: data.postContent,
-                    time: data.time
+                    time: data.time,
+                    id: doc.id
                 });
             });
 
@@ -99,7 +101,13 @@ const Homepage: React.FunctionComponent = () => {
                 <StyledContentArea>
                     <PostInput db={db}></PostInput>
                     {
-                        posts ? posts.sort(comparePosts).map((p, i) => <Post postContent={p.postContent} postTime={p.time.seconds} key={i} />) : <Spinner />
+                        posts ? posts.sort(comparePosts).map((p, i) => <Post
+                            id={p.id}
+                            postContent={p.postContent}
+                            postTime={p.time.seconds}
+                            key={i}
+                            showButton={true}
+                        />) : <Spinner />
                     }
                 </StyledContentArea>
             </StyledGrid>

@@ -1,10 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import crypto from 'crypto';
+import { useHistory } from 'react-router';
 
 interface PostProps{
     postContent: string; 
-    postTime: number; 
+    postTime: number;
+    id: string;
+    showButton: boolean;
 }
 
 const StyledPost = styled.div`
@@ -19,6 +22,9 @@ const StyledPost = styled.div`
     margin-bottom: 20px;
     overflow: hidden;
     text-align: left;
+    position: relative;
+    padding-bottom: 50px;
+
     
 `
 const StyledAvatar = styled.img`
@@ -50,10 +56,31 @@ const StyledPostContent = styled.div`
     margin-bottom: 15px;
 `;
 
+const StyledButton = styled.button`
+    border: none;
+    font-family: var(--header-text);
+    color: var(--uva-blue);
+    background-color: var(--uva-orange);
+    border-radius: 10px;
+    height: 40px;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    &:hover {
+        box-shadow: 0px 0px 3px 0px var(--uva-blue);
+    }
+    
+    &:active {
+        border: 1px inset black; 
+    }
+`;
 
 
-const Post: React.FunctionComponent<PostProps> = ({ postContent, postTime }) => {
+const Post: React.FunctionComponent<PostProps> = ({id, postContent, postTime, showButton }) => {
     const [avatarKey, setAvatarKey] = React.useState<string>("");
+    const history = useHistory();
     React.useEffect(() => {
         let key = "";
         try {
@@ -65,7 +92,7 @@ const Post: React.FunctionComponent<PostProps> = ({ postContent, postTime }) => 
         }
         setAvatarKey(key);
     }, [postContent])
-
+    
     const formatDate = (date: Date) => {
         return `${date.getHours()}:${date.getMinutes()} on ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     }
@@ -80,6 +107,9 @@ const Post: React.FunctionComponent<PostProps> = ({ postContent, postTime }) => 
             <StyledPostContent>
                 {postContent}
             </StyledPostContent>
+            {showButton ? <StyledButton onClick={(e) => { history.push(`/post/${id}`) }}>
+                Let's Fix It!
+            </StyledButton> : <></>}
         </StyledPost>
     );
 }
