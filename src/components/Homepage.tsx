@@ -5,17 +5,8 @@ import Post from './Post';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, Firestore, onSnapshot } from 'firebase/firestore';
 import PostInput from './PostInput';
+import { IPost } from '../types';
 
-
-
-interface IPost {
-    postContent: string;
-    time: {
-        seconds: number;
-        nanoseconds: number;
-    };
-    id: string; 
-}
 
 
 const StyledGrid = styled.div`
@@ -78,10 +69,12 @@ const Homepage: React.FunctionComponent = () => {
             
             col.forEach(doc => {
                 const data = doc.data();
+                console.log(data.replies);
                 posts.push({
                     postContent: data.postContent,
                     time: data.time,
-                    id: doc.id
+                    id: doc.id,
+                    replies: data.replies
                 });
             });
 

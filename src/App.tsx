@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Homepage from './components/Homepage';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PostView from './components/PostView';
 
 function App() {
@@ -10,16 +10,21 @@ function App() {
     <div className="App">
       
         <Switch>
-          <Route path="/post/:postID" render={({ match }) => (
+          <Route path="/HoosProblem/post/:postID" render={({ match }) => (
             <PostView postID={ match.params.postID } />
           )} />
         </Switch>
 
-        <Route path="/home">
+        <Route path="/HoosProblem/home">
           <Homepage></Homepage>
         </Route>
 
-        
+        <Route exact path="/">
+          <Redirect to="/HoosProblem/home"></Redirect>
+        </Route>
+        <Route exact path="/HoosProblem">
+          <Redirect to="/HoosProblem/home"></Redirect>
+        </Route>
       </div>
     </Router>
 

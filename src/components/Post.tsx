@@ -107,9 +107,10 @@ const Post: React.FunctionComponent<PostProps> = ({id, postContent, postTime, sh
             <StyledPostContent>
                 {postContent}
             </StyledPostContent>
-            {showButton ? <StyledButton onClick={(e) => { history.push(`/post/${id}`) }}>
+            {showButton ? <StyledButton onClick={(e) => { history.push(`/HoosProblem/post/${id}`) }}>
                 Let's Fix It!
             </StyledButton> : <></>}
+            
         </StyledPost>
     );
 }

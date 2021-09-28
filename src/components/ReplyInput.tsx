@@ -1,13 +1,14 @@
-import { Firestore, addDoc, collection, Timestamp } from 'firebase/firestore';
+import { Firestore, Timestamp, updateDoc, doc, arrayUnion } from 'firebase/firestore';
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface PostInputProps{
+interface ReplyInputProps {
     db?: Firestore;
+    postID: string;
 }
 
 
-const StyledPostInput = styled.div`
+const StyledReplyInput = styled.div`
     width: 60%;
     @media only screen and (max-width: 700px){
         width: 90%;
@@ -55,7 +56,7 @@ const StyledButton = styled.button`
         border: 1px inset black; 
     }
 `;
-const PostInput: React.FunctionComponent<PostInputProps> = ({ db }) => {
+const ReplyInput: React.FunctionComponent<ReplyInputProps> = ({ db, postID }) => {
     const [textAreaContent, setTextAreaContent] = React.useState<string>();
     const textRef = React.useRef<HTMLTextAreaElement>(null);
 
@@ -64,34 +65,35 @@ const PostInput: React.FunctionComponent<PostInputProps> = ({ db }) => {
         console.log(textAreaContent);
         if (db) {
             if (!textAreaContent) {
-                alert("Post must contain content");
-                return; 
+                
+                alert("Reply must contain content");
+                return;
             }
-            const postCollection = collection(db, 'posts');
-            const ts = new Timestamp(Date.now()/1000, 0);
-            addDoc(postCollection, {
-                postContent: textAreaContent,
-                time: ts,
-                upvotes: 0,
-                replies: []
+            const postRef = doc(db, "posts", postID);
+            const ts = new Timestamp(Date.now() / 1000, 0);
+
+            updateDoc(postRef, {
+                replies: arrayUnion({
+                    replyContent: textAreaContent,
+                    time: ts,
+                    upvotes: 0
+                })
             });
-            setTextAreaContent("");
             if (textRef.current) {
-                textRef.current.innerText = "";
                 textRef.current.value = "";
             }
-            console.log('post created');
+            console.log('reply created');
         } else {
             console.log('not connected to database');
         }
     }
-    
+
     return (
-        <StyledPostInput>
-            <StyledTextarea ref={textRef} placeholder="Have a problem?" onChange={(e) => {setTextAreaContent(e.target.value)}}></StyledTextarea>
-            <StyledButton onClick={handleInput}>Post!</StyledButton>
-        </StyledPostInput>
+        <StyledReplyInput>
+            <StyledTextarea ref={textRef} placeholder="Have a comment or solution?" onChange={(e) => { setTextAreaContent(e.target.value) }}></StyledTextarea>
+            <StyledButton onClick={handleInput}>Reply!</StyledButton>
+        </StyledReplyInput>
     );
 }
 
-export default PostInput;
+export default ReplyInput;

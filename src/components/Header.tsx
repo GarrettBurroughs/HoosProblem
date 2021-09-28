@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ILink } from '../types';
 
 const StyledHeader = styled.div`
     position: fixed;
@@ -59,10 +60,6 @@ const StyledLink = styled.div`
     
 `;
 
-interface ILink{
-    text: string;
-    link: string;
-}
 interface HeaderProps {
     links?: ILink[]
 }
